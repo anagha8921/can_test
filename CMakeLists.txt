@@ -38,6 +38,7 @@ include_directories(${CAN_UTILS_INCLUDE_DIRS})
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(can_msgs REQUIRED)
+find_package(aox_can_msgs REQUIRED)
 # Add your executable
 add_executable(can_converter src/can_trigger.cpp ${CAN_UTILS_INCLUDE_DIRS}/dbc/dbc_parser.cpp ${CAN_UTILS_INCLUDE_DIRS}/v2c/v2c_transcoder.cpp)
 
@@ -45,7 +46,7 @@ add_executable(can_converter src/can_trigger.cpp ${CAN_UTILS_INCLUDE_DIRS}/dbc/d
 # target_link_libraries(can_converter ${CAN_UTILS_LIB})
 
 # Link against ROS 2 libraries
-ament_target_dependencies(can_converter rclcpp can_msgs)
+ament_target_dependencies(can_converter rclcpp can_msgs aox_can_msgs)
 
 # Set the C++ standard specifically for your target
 target_compile_features(can_converter PRIVATE cxx_std_20)
